@@ -4,7 +4,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "vitest --run --reporter verbose --globals",
+        "test": "vitest --run --reporter verbose",
         "test:watch": "vitest",
         "start": "http-server -c-1"
     },
