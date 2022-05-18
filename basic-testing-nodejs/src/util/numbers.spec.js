@@ -1,5 +1,5 @@
 import { it, expect } from "vitest";
-import { clearNumbers, transformToNumber } from "./numbers";
+import { transformToNumber } from "./numbers";
 
 it("Check transform string to number - string is a number", () => {
     // Arrange
@@ -26,14 +26,4 @@ it("Check transform string to number - string is a word", () => {
     // Assert
     expect(result).toBeNaN();
     // expect(resultArray).toBeNaN();
-});
-
-// Vitest coverage is awesome tool!
-
-it("should not throw error and transform show  array numbers", () => {
-    const valueArray = ["3", "2", "11"];
-
-    const result = clearNumbers(valueArray);
-
-    expect(result).toEqual(valueArray.map((el) => +el));
 });
