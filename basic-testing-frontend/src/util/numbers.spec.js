@@ -10,12 +10,13 @@ it("Check transform string to number - string is a number", () => {
 
     // Assert
     const expectResult = +numberAsString;
-    expect(result).toBe(expectResult);
+
+    expect(result).toBe(expectResult).toBeTypeOf("number").not.toBeNaN();
 });
 
 it("Check transform string to number - string is a word", () => {
     // Arrange
-    const simpleString = "I am simple!";
+    const simpleString = "I am simple but invalid!";
     // const exampleWithArray = [0, 1];
 
     // Act
