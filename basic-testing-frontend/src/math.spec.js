@@ -9,5 +9,31 @@ it("should sumarize all numbers values from array", () => {
     const result = add(numbers);
 
     // ASSERT
-    expect(result).toBe(6);
+    const expectResult = numbers.reduce((prev, cur) => prev + cur, 0);
+
+    expect(result).toBe(expectResult);
+});
+
+it("should yield NaN if a least one invalid number is provided", () => {
+    // ARRANGE
+    const inputs = ["invalid", 1];
+
+    // ACT
+    const result = add(inputs);
+
+    //ASSERT
+    expect(result).toBeNaN();
+});
+
+it("should yield a correct sum if an array of numeric string values is provided", () => {
+    // ARRANGE
+    const numbers = ["1", "2"];
+
+    // ACT
+    const result = add(numbers);
+
+    // ASSERT
+    const expectResult = numbers.reduce((prev, cur) => +prev + +cur, 0);
+
+    expect(result).toBe(expectResult);
 });
