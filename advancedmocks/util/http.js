@@ -1,22 +1,21 @@
 import { HttpError } from "./errors.js";
 
 export async function sendDataRequest(data) {
-    let responseData;
-    await fetch("https://dummy-site.dev/posts", {
+    const response = await fetch("https://dummy-site.dev/posts", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-    })
-        .then((res) => res.json())
-        .then((res) => (responseData = res));
+    });
+    // .then((res) => res.json())
+    // .then((res) => (responseData = res));
 
-    // const responseData = await response.json();
+    const responseData = await response.json();
 
-    // if (!response.ok) {
-    //   throw new HttpError(response.status, 'Sending the request failed.', responseData);
-    // }
+    if (!response.ok) {
+        throw new HttpError(response.status, "Sending the request failed.", responseData);
+    }
 
     return responseData;
 }
