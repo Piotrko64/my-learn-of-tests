@@ -3,15 +3,15 @@ import { promises as fs } from "fs";
 import writeData from "./io";
 
 vi.mock("fs");
-vi.mock("path", () => {
-    return {
-        default: {
-            join: (...args) => {
-                return args[args.length - 1];
-            },
-        },
-    };
-});
+// vi.mock("path", () => {
+//     return {
+//         default: {
+//             join: (...args) => {
+//                 return args[args.length - 1];
+//             },
+//         },
+//     };
+// });
 // MOCKS
 
 it("should execute the writeFile method", () => {
@@ -20,7 +20,18 @@ it("should execute the writeFile method", () => {
     const testFilename = "text.txt";
 
     writeData(testData, testFilename);
-    // return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
+    return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
     // expect(fs.writeFile).toBeCalled();
-    expect(fs.writeFile).toBeCalledWith(testFilename, testData);
+    // expect(fs.writeFile).toBeCalledWith(testFilename, testData);
+});
+
+it("should execute the writeFile method - toBeCalled", () => {
+    const testData = "Test1";
+
+    const testFilename = "text.txt";
+
+    writeData(testData, testFilename);
+    // return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
+
+    expect(fs.writeFile).toBeCalled();
 });
